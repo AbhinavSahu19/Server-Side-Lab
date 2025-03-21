@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hotel Booking - Indore</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="Indore Logo" class="logo">
+    <h1>Book Your Stay in Indore</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="heritage.html">Heritage</a>
+      <a href="hotel_booking.html">Hotel Booking</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>Hotel Booking Form</h2>
+    <form>
+      <label>Name:</label>
+      <input type="text" required>
+      
+      <label>Email:</label>
+      <input type="email" required>
+      
+      <label>Check-in Date:</label>
+      <input type="date" required>
+      
+      <label>Check-out Date:</label>
+      <input type="date" required>
+      
+      <label>Number of Guests:</label>
+      <input type="number" min="1" required>
+      
+      <label>Room Type:</label>
+      <select>
+        <option>Single Room</option>
+        <option>Double Room</option>
+        <option>Suite</option>
+      </select>
+      
+      <button type="submit">Book Now</button>
+    </form>
+  </section>
+</body>
+</html>
