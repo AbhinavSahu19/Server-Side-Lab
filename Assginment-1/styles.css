@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #f9f9f9;
+  }
+  
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .header {
+    background-color: #b22222;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header .logo img {
+    height: 60px;
+  }
+  
+  .header .search input[type="text"] {
+    padding: 8px;
+    width: 250px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .header .search input[type="text"]:focus {
+     outline: 2px solid #fff;
+  }
+  
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 400px;
+  }
+  
+  .slider-list {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+  }
+  
+  .slider-list img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .slider-nav button {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .slider-nav .prev {
+    left: 10px;
+  }
+  
+  .slider-nav .next {
+    right: 10px;
+  }
+  
+  .slides-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+  
+  .slide {
+    flex: 0 0 220px;
+    text-align: center;
+  }
+  
+  .slide img {
+    width: 180px;
+    border-radius: 8px;
+  }
+  
+  .slide p {
+    margin-top: 10px;
+    font-weight: bold;
+  }  
+
+  .highlights h3,
+  .latest-news h3 {
+    background-color: #b22222;
+    color: white;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  section {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+  }
+
+  
+  .latest-news ul li, .latest-news ul li a{
+    margin-bottom: 10px;
+    color: #da2525;
+    font-weight: bold;
+    
+  }
+  .latest-news ul li a:hover {
+    color: #000000;
+  }
+
+  .footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
