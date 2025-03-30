@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>To-Do App</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif; 
+            }
+            button { 
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 14px;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+            }
+            h1{
+                display: flex;
+                justify-content: center;
+            }
+            .input{
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+            button:hover{
+                scale: 1.1;
+            }
+            input{
+                height: 30px;
+                width: 300px;
+                display: flex;
+                background-color: #ffffff;
+                border-radius: 12px;
+                padding: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>To-Do App</h1>
+        <div class="input">
+            <input id="taskInput" type="text" placeholder="Enter your task" />
+            <button onclick="addTask()">Add Task</button>
+        </div>
+
+        <h2>Tasks :- </h2>
+        <div id="taskList"></div>
+
+        <script>
+            const tasks = [];
+            displayTasks()
+
+            function generateTaskId() {
+            return Math.floor(Math.random() * 1000000);
+            }
+
+            function addTask() {
+                const taskInput = document.getElementById('taskInput').value.trim();
+                if (!taskInput) {
+                    alert('Enter some task.');
+                    return;
+                }
+
+                const id = generateTaskId();
+                const time = new Date().toLocaleString();
+                tasks.push({ id: id, name: taskInput, time: time });
+
+                displayTasks();
+                document.getElementById('taskInput').value = '';
+            }
+
+            function displayTasks() {
+                const taskList = document.getElementById('taskList');
+                taskList.innerHTML = ''; 
+                if (tasks.length === 0) {
+                    taskList.innerHTML = '<p>No tasks available.</p>';
+                    return;
+                }
+
+                tasks.forEach(task => {
+                    const taskDiv = document.createElement('div');
+                    taskDiv.style.display = 'flex';
+                    taskDiv.style.justifyContent = 'space-between';
+                    taskDiv.style.alignItems = 'center';
+                    taskDiv.style.border = '1px solid #ccc';
+                    taskDiv.style.borderRadius = '8px';
+                    taskDiv.style.padding = '10px';
+                    taskDiv.style.marginBottom = '8px';
+                    taskDiv.style.backgroundColor = '#f9f9f9';
+
+                    const taskDetails = document.createElement('div');
+                    
+                    const taskTitle = document.createElement('h3');
+                    taskTitle.textContent = task.name;
+                    taskDetails.appendChild(taskTitle);
+
+                    const taskDateTime = document.createElement('small');
+                    taskDateTime.textContent = `${task.time}`;
+                    taskDateTime.style.color = '#777';
+                    taskDetails.appendChild(taskDateTime);
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.style.backgroundColor = '#ff4d4d';
+                    deleteButton.style.color = '#fff';
+                    deleteButton.style.border = 'none';
+                    deleteButton.style.padding = '8px 16px';
+                    deleteButton.style.borderRadius = '5px';
+                    deleteButton.style.cursor = 'pointer';
+                    deleteButton.onmouseover = () => deleteButton.style.backgroundColor = '#e60000';
+                    deleteButton.onmouseout = () => deleteButton.style.backgroundColor = '#ff4d4d';
+                    deleteButton.onclick = () => deleteTask(task.id);
+
+                    taskDiv.appendChild(taskDetails);
+                    taskDiv.appendChild(deleteButton);
+                    taskList.appendChild(taskDiv);
+                });
+            }
+
+
+            function deleteTask(id) {
+                const confirmDelete = confirm('Delete this task?');
+                if (!confirmDelete) return;
+
+                const index = tasks.findIndex(task => task.id === id);
+                if (index !== -1) {
+                    tasks.splice(index, 1);
+                    displayTasks();
+                }
+            }
+        </script>
+    </body>
+</html>
